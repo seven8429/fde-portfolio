@@ -32,7 +32,7 @@ if not api_key:
     raise RuntimeError("❌ 未找到 DEEPSEEK_API_KEY，请先 export")
 client = OpenAI(api_key=api_key, base_url="https://api.deepseek.com")
 
-DB = os.path.expanduser("~/fde/04-db/sales.db")
+DB = os.path.expanduser("~/fde/fde-portfolio/04-db/sales.db")
 
 # ---------- 2) 工具（来自第10周，原样复用）----------
 def query_sales(region: str) -> str:
