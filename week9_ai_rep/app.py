@@ -6,6 +6,18 @@ Week9 D5：Streamlit 界面 —— AI 业代助手可演示成品
 import os
 import streamlit as st
 from chat import RepChat
+from dotenv import load_dotenv
+
+_env_path = os.path.expanduser("~/fde/fde-portfolio/.env")
+load_dotenv(dotenv_path=_env_path, override=True) if os.path.exists(_env_path) else load_dotenv(override=True)
+
+# 云端：从 Streamlit secrets 把 key 注入环境变量（chat.py 用 os.getenv 读）
+try:
+    _k = st.secrets.get("DEEPSEEK_API_KEY")
+    if _k and "DEEPSEEK_API_KEY" not in os.environ:
+        os.environ["DEEPSEEK_API_KEY"] = _k
+except Exception:
+    pass
 
 st.set_page_config(page_title="AI 业代助手", page_icon="🛒")
 st.title("🛒 AI 业代助手")

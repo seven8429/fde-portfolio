@@ -6,7 +6,10 @@ import os, json
 import numpy as np
 from sentence_transformers import SentenceTransformer
 
-INDEX_DIR = os.path.expanduser("~/fde/week9_ai_rep/index")
+# 原：INDEX_DIR = os.path.expanduser("~/fde/week9_ai_rep/index")
+_BASE = os.path.dirname(os.path.abspath(__file__))
+INDEX_DIR = os.path.join(_BASE, "index")
+
 MODEL_NAME = "BAAI/bge-small-zh-v1.5"
 QUERY_INSTRUCTION = "为这个句子生成表示以用于检索相关文章："
 
